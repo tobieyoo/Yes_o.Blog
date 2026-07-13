@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compost Before Concrete — Field Notes on Growing Up Green</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Literata:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EAE3D0;
+    --paper-2:#E1D8C0;
+    --ink-deep:#16281F;
+    --ink:#1B2A22;
+    --green:#2F5233;
+    --green-soft:#6B8F71;
+    --accent:#D98A3D;
+    --soil:#7C5232;
+    --rule: rgba(27,42,34,0.18);
+    --rule-strong: rgba(27,42,34,0.35);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Literata', serif;
+    line-height:1.7;
+    font-size:17px;
+  }
+  ::selection{ background: var(--accent); color: var(--paper); }
+
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    color:var(--ink-deep);
+    letter-spacing:-0.01em;
+  }
+
+  .label{
+    font-family:'JetBrains Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    font-size:12px;
+    color:var(--green);
+  }
+
+  a{ color:var(--soil); }
+
+  /* ---------- paper texture ---------- */
+  .grain{
+    background-image:
+      radial-gradient(rgba(27,42,34,0.035) 1px, transparent 1px);
+    background-size:3px 3px;
+  }
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    background:var(--ink-deep);
+    color:var(--paper);
+    padding:64px 24px 56px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-inner{
+    max-width:880px;
+    margin:0 auto;
+    position:relative;
+    z-index:2;
+  }
+  .hero .label{ color:var(--green-soft); margin-bottom:18px; display:block;}
+  .hero h1{
+    font-size:clamp(2.4rem, 6vw, 4rem);
+    color:var(--paper);
+    margin:0 0 20px;
+    line-height:1.05;
+  }
+  .hero h1 em{ color:var(--accent); font-style:italic; }
+  .hero p.dek{
+    font-family:'Literata', serif;
+    font-size:1.15rem;
+    color:#C9CFC5;
+    max-width:56ch;
+    margin:0 0 28px;
+  }
+  .hero-meta{
+    display:flex; gap:24px; flex-wrap:wrap;
+    font-family:'JetBrains Mono', monospace;
+    font-size:12.5px;
+    color:var(--green-soft);
+    border-top:1px solid rgba(255,255,255,0.15);
+    padding-top:18px;
+  }
+  .leafwrap{
+    position:absolute; right:-40px; top:-40px; opacity:0.5; z-index:1;
+  }
+
+  /* ---------- LAYOUT ---------- */
+  .page{
+    max-width:1040px;
+    margin:0 auto;
+    padding:0 24px;
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:48px;
+    align-items:start;
+  }
+
+  /* ---------- TOC / sidebar ---------- */
+  nav.toc{
+    position:sticky;
+    top:24px;
+    margin-top:48px;
+    padding-bottom:48px;
+  }
+  nav.toc .label{ margin-bottom:14px; display:block;}
+  nav.toc ol{
+    list-style:none; margin:0; padding:0;
+    border-left:1px solid var(--rule);
+  }
+  nav.toc li{ margin:0; }
+  nav.toc a{
+    display:block;
+    text-decoration:none;
+    color:var(--ink);
+    font-size:13.5px;
+    padding:9px 0 9px 16px;
+    border-left:2px solid transparent;
+    margin-left:-1px;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  nav.toc a:hover{ color:var(--green); border-left-color:var(--green-soft); }
+  nav.toc .n{
+    font-family:'JetBrains Mono', monospace;
+    color:var(--soil);
+    margin-right:8px;
+    font-size:12px;
+  }
+  .toc-tag{
+    margin-top:22px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11.5px;
+    color:var(--green-soft);
+    line-height:1.6;
+  }
+
+  /* ---------- ARTICLE ---------- */
+  article{ margin-top:48px; padding-bottom:80px; }
+
+  .opening{
+    font-size:1.2rem;
+    color:var(--ink-deep);
+    border-left:3px solid var(--accent);
+    padding-left:20px;
+    margin:0 0 48px;
+  }
+  .opening::first-letter{
+    font-family:'Fraunces', serif;
+    font-size:3.6rem;
+    font-weight:600;
+    float:left;
+    line-height:0.8;
+    margin:6px 8px 0 0;
+    color:var(--green);
+  }
+
+  section.entry{
+    margin-bottom:56px;
+    scroll-margin-top:24px;
+  }
+  .entry-head{
+    display:flex; align-items:baseline; gap:14px;
+    border-bottom:1px solid var(--rule-strong);
+    padding-bottom:10px;
+    margin-bottom:22px;
+  }
+  .entry-num{
+    font-family:'JetBrains Mono', monospace;
+    color:var(--paper);
+    background:var(--green);
+    font-size:12.5px;
+    padding:3px 9px;
+    border-radius:2px;
+    flex-shrink:0;
+  }
+  section.entry h2{
+    font-size:1.55rem;
+    margin:0;
+  }
+
+  section.entry p{ margin:0 0 16px; }
+  section.entry p:last-child{ margin-bottom:0; }
+
+  blockquote{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:1.3rem;
+    color:var(--soil);
+    border-top:1px solid var(--rule);
+    border-bottom:1px solid var(--rule);
+    padding:20px 4px;
+    margin:28px 0;
+  }
+  blockquote span{
+    display:block;
+    font-family:'JetBrains Mono', monospace;
+    font-style:normal;
+    font-size:11.5px;
+    color:var(--green-soft);
+    margin-top:10px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+  }
+
+  /* ---------- CTA / washi tape cards ---------- */
+  .cta{
+    position:relative;
+    background:#F4EFE1;
+    border:1px dashed var(--rule-strong);
+    padding:26px 28px;
+    margin:36px 0;
+    transform:rotate(-0.4deg);
+  }
+  .cta.alt{ transform:rotate(0.4deg); }
+  .cta::before{
+    content:"";
+    position:absolute;
+    top:-10px; left:28px;
+    width:64px; height:20px;
+    background:var(--accent);
+    opacity:0.55;
+    transform:rotate(-2deg);
+  }
+  .cta .label{ color:var(--soil); margin-bottom:8px; }
+  .cta h3{ font-size:1.25rem; margin:0 0 10px; }
+  .cta p{ margin:0 0 18px; color:var(--ink); }
+  .cta-actions{ display:flex; gap:12px; flex-wrap:wrap; }
+  .btn{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12.5px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    text-decoration:none;
+    padding:11px 18px;
+    border-radius:2px;
+    display:inline-block;
+  }
+  .btn.solid{ background:var(--ink-deep); color:var(--paper); }
+  .btn.outline{ border:1px solid var(--ink-deep); color:var(--ink-deep); }
+
+  /* ---------- divider ---------- */
+  .divider{
+    display:flex; align-items:center; gap:12px;
+    margin:44px 0;
+    color:var(--green-soft);
+  }
+  .divider::before, .divider::after{
+    content:""; height:1px; flex:1; background:var(--rule);
+  }
+
+  footer{
+    background:var(--ink-deep);
+    color:var(--green-soft);
+    text-align:center;
+    padding:32px 24px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.04em;
+  }
+  footer a{ color:var(--paper); }
+
+  @media (max-width: 780px){
+    .page{ grid-template-columns:1fr; }
+    nav.toc{ position:static; margin-top:32px; padding-bottom:0; }
+    article{ margin-top:24px; }
+  }
+</style>
+</head>
+<body class="grain">
+
+<header class="hero">
+  <svg class="leafwrap" width="280" height="280" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M240 40C180 30 90 60 60 140C30 220 90 260 150 250C210 240 250 180 250 120C250 90 245 60 240 40Z" stroke="#6B8F71" stroke-width="1"/>
+    <path d="M240 40C200 90 170 150 150 250" stroke="#6B8F71" stroke-width="1"/>
+    <path d="M190 70C180 100 175 130 175 160" stroke="#6B8F71" stroke-width="0.7"/>
+    <path d="M220 100C200 120 190 140 185 165" stroke="#6B8F71" stroke-width="0.7"/>
+    <path d="M150 200C130 210 115 220 105 230" stroke="#6B8F71" stroke-width="0.7"/>
+  </svg>
+  <div class="hero-inner">
+    <span class="label">Field notes · youth &amp; sustainability</span>
+    <h1>Compost Before <em>Concrete</em></h1>
+    <p class="dek">A personal blog on what three years in YES-O taught me about growing up green in a province that floods every year — and why I stopped waiting for someone else to fix it.</p>
+    <div class="hero-meta">
+      <span>Quezon National High School, Lucena City</span>
+      <span>9 min read</span>
+      <span>Personal commentary</span>
+    </div>
+  </div>
+</header>
+
+<div class="page">
+
+  <nav class="toc">
+    <span class="label">Table of contents</span>
+    <ol>
+      <li><a href="#e1"><span class="n">01</span>The trash bin that started it</a></li>
+      <li><a href="#e2"><span class="n">02</span>What YES-O actually taught me</a></li>
+      <li><a href="#e3"><span class="n">03</span>The typhoon of problems we created</a></li>
+      <li><a href="#e4"><span class="n">04</span>Where youth environmentalism falls short</a></li>
+      <li><a href="#e5"><span class="n">05</span>Small roots, planted on purpose</a></li>
+    </ol>
+    <p class="toc-tag">Written in the voice of a Grade 11 student at Quezon National High School — not a lecture, just field notes.</p>
+  </nav>
+
+  <article>
+
+    <p class="opening">
+      Our school's trash bin used to have three labels — biodegradable, non-biodegradable, recyclable — and exactly one destination, the same dump truck. Nobody checked. That contradiction is where this started for me, long before I understood words like "carbon footprint" or "climate resilience." I just knew the labels were lying, and sixteen-year-old me found that unreasonably annoying.
+    </p>
+
+    <section class="entry" id="e1">
+      <div class="entry-head">
+        <span class="entry-num">01</span>
+        <h2>The trash bin that started it</h2>
+      </div>
+      <p>
+        I joined my school's Youth for Environment in Schools Organization, or YES-O, mostly because a friend needed one more member to complete their chapter's roster. I stayed because the first activity we ran was a genuinely embarrassing waste audit — we opened three days' worth of canteen trash in front of the whole junior high, sorted it by hand, and read out loud how much of the "biodegradable" bin was actually plastic straws and foil.
+      </p>
+      <p>
+        Nobody clapped. A few people gagged. But that was the first time I understood that most environmental problems in a school aren't caused by a lack of rules — Lucena City actually has decent waste ordinances — they're caused by nobody being assigned to notice when the rules quietly stop being followed. YES-O, at least in our chapter, became the group that noticed.
+      </p>
+    </section>
+
+    <section class="entry" id="e2">
+      <div class="entry-head">
+        <span class="entry-num">02</span>
+        <h2>What YES-O actually taught me</h2>
+      </div>
+      <p>
+        DepEd markets YES-O as a leadership and values-formation program, and on paper that's accurate but also kind of undersells it. What it actually taught me was closer to project management with soil under your fingernails — how to requisition seedlings from the City Environment and Natural Resources Office, how to keep a tree-planting log that a barangay official will actually sign, how to convince twenty distracted fifteen-year-olds to finish digging a hole in the sun without a single one of them quitting halfway.
+      </p>
+      <p>
+        It also taught me that environmental work is unglamorous by design. Coastal or mangrove cleanups look good in a photo for maybe the first ten minutes. After that it's just repetitive, itchy, unfilmed labor — and that's precisely the part where you find out who actually cares versus who came for the certificate.
+      </p>
+      <blockquote>
+        The rehabilitation isn't the tree you plant today. It's whoever waters it in April, when there's no camera and no adviser watching.
+        <span>— a note I wrote in our chapter logbook, Grade 10</span>
+      </blockquote>
+    </section>
+
+    <div class="divider">◆</div>
+
+    <section class="entry" id="e3">
+      <div class="entry-head">
+        <span class="entry-num">03</span>
+        <h2>The Typhoon of Problems We Created</h2>
+      </div>
+      <p>
+        A typhoon is more than a weather event. It is the face of every environmental problem we've ignored for decades. Each storm carries not only wind and rain, but the consequences of deforestation, polluted waterways, poorly planned cities, and a warming climate. What crashes into our homes isn't just nature's fury—it is the accumulated weight of human neglect returning to demand its price.
+      </p>
+      <p>
+        Growing up in Quezon Province, I have learned that environmental issues are never distant headlines. Every rainy season, familiar streets disappear beneath muddy water, rivers rise more quickly than before, and communities prepare for another cycle of rebuilding. These experiences shaped the way I view environmental responsibility—not as an optional advocacy, but as a necessity.
+      </p>
+      <p>
+        As both an observer and someone who once served as the Chairperson of the Environmental Issue and Research Committee at Quezon National High School, I have had the opportunity to witness these challenges from two perspectives. I have seen how environmental degradation affects communities firsthand, but I have also studied the patterns behind these disasters—how climate change, unsustainable practices, and the loss of natural ecosystems continue to amplify their impact. That experience taught me that the environmental crisis is not a series of isolated events but a connected system of problems that demand informed, collective action.
+      </p>
+      <p>
+        That understanding is what led me to continue my advocacy as a member of the Youth for Environment in Schools Organization (YES-O). Joining YES-O was not simply about participating in school activities; it was about transforming observation into action. Whether through environmental education, community initiatives, or promoting sustainable practices, I came to realize that meaningful change begins long before a typhoon makes landfall. While we cannot stop every storm from coming, we can address the environmental conditions that make each one more destructive than the last.
+      </p>
+    </section>
+
+    <div class="cta" id="join">
+      <span class="label">Call to action · 01</span>
+      <h3>Tara, walk into your school's YES-O room this week</h3>
+      <p>You don't need a title or a green thumb. Most chapters run on whoever actually shows up on cleanup day — that's the entire application process.</p>
+      <div class="cta-actions">
+        <a class="btn solid" href="#e4">Keep reading ↓</a>
+        <a class="btn outline" href="https://www.deped.gov.ph" target="_blank" rel="noopener">DepEd YES-O program</a>
+      </div>
+    </div>
+
+    <section class="entry" id="e4">
+      <div class="entry-head">
+        <span class="entry-num">04</span>
+        <h2>Where youth environmentalism falls short</h2>
+      </div>
+      <p>
+        I want to be honest about the limits of this, because I think a lot of youth-led sustainability content oversells itself. Tree-planting activities that never get a survival-rate follow-up plant a lot of trees that quietly die in month three. Ordinances get passed at the barangay level and then never get enforced because nobody was assigned enforcement in the first place. And frankly, a good number of our own activities were designed around what would look complete in an accomplishment report, not around what the actual ecosystem needed.
+      </p>
+      <p>
+        Youth organizations like YES-O also can't substitute for the structural stuff — proper drainage systems, enforced coastal setbacks, waste management budgets that survive a change in local administration. What we can do is smaller, but I'd argue it still matters — we can keep the pressure visible, keep the follow-up happening, and refuse to let "we did an activity" stand in for "the problem is handled."
+      </p>
+    </section>
+
+    <div class="divider">◆</div>
+
+    <section class="entry" id="e5">
+      <div class="entry-head">
+        <span class="entry-num">05</span>
+        <h2>Small roots, planted on purpose</h2>
+      </div>
+      <p>
+        Today, my environmental advocacy no longer needs a stage or a certificate to feel worth doing. I bring my own bag when I buy pasalubong, I've gotten mildly insufferable about correcting people who trash-mix at school events, and I still check on the seedlings from our first planting whenever I pass that stretch of road. None of it is dramatic. All of it is the difference between doing something and having done something once.
+      </p>
+      <p>
+        If there's one thing three years of this has actually changed in me, it's that I stopped needing a typhoon to remind me why it matters. The bill Quezon pays every rainy season isn't an argument I need to win anymore — it's just the reason I show up to the trash audit, the mangrove cleanup, the follow-up watering schedule that nobody else volunteered for. Growing up green here was never optional. I just decided to do it on purpose instead of by accident.
+      </p>
+    </section>
+
+    <div class="cta alt" id="follow">
+      <span class="label">Call to action · 02</span>
+      <h3>Plant one habit this week, not a hundred</h3>
+      <p>Pick one — segregate properly at home, bring a reusable bag, or check on a tree someone else planted. Subscribe for the next field note, or tell me what your school's YES-O chapter actually does.</p>
+      <div class="cta-actions">
+        <a class="btn solid" href="#top">Back to top</a>
+        <a class="btn outline" href="#toc">Subscribe for field notes</a>
+      </div>
+    </div>
+
+  </article>
+</div>
+
+<footer>
+  Field notes on youth &amp; sustainability · Quezon National High School, Lucena City · written for a school in the middle of it
+</footer>
+
+</body>
+</html>
